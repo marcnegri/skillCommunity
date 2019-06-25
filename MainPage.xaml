@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:MetadataScraper"
+             xmlns:customComponents="clr-namespace:MetadataScraper.CustomComponents;assembly=MetadataScraper"
+             x:Class="MetadataScraper.MainPage">
+    <StackLayout VerticalOptions="StartAndExpand">
+        <!-- Place new controls here -->
+        <Label Text="Welcome to Xamarin.Forms!" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+        <Editor HorizontalOptions="CenterAndExpand"  x:Name="etyURL" TextColor="Black" HeightRequest="200" WidthRequest="300" BackgroundColor="Silver" TextChanged="EtyURL_TextChanged"/>
+        <Button Text="Scrape it !" x:Name="btnScrape" TextColor="Black" Clicked="BtnScrape_Clicked"/>
+        
+        <StackLayout>
+            <customComponents:HyperLinkLabel x:Name="lblText" TextColor="Black" Text="blqlblqlblq https://www.twitter.com"/>
+            <Image x:Name="imgUrl" HeightRequest="150" WidthRequest="150" />
+            <Label x:Name="lblTitle" TextColor="Gray" FontSize="Large" />
+            <Label x:Name="lblDescription" TextColor="Gray" FontSize="Medium" />
+        </StackLayout>
+        
+    </StackLayout>
+</ContentPage>
