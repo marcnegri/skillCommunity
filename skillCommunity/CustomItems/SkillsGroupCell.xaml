@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Grid x:Name="grdCommunity"
+      Padding="10"
+      RowSpacing="10"
+      ColumnSpacing="10"
+      VerticalOptions="FillAndExpand"
+      HorizontalOptions="FillAndExpand"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="skillCommunity.CustomItems.SkillsGroup">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="110" />
+        <RowDefinition Height="50" />
+        <RowDefinition Height="60" />
+        <RowDefinition Height="1" />
+
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+
+    <Image Aspect="AspectFill"
+           Source="{Binding ImageUrl}"
+           Grid.Row="0"
+           Grid.RowSpan="2"
+           Grid.Column="0"
+           Grid.ColumnSpan="1" />
+    <StackLayout BackgroundColor="White"
+                 Opacity="0.8"
+                 Grid.Row="1"
+                 Grid.RowSpan="2" />
+    <Label Text="{Binding Label}"
+           Opacity="1"
+           TextColor="#2196F3"
+           Grid.Row="1"
+           Grid.RowSpan="2"
+           FontSize="18"
+           LineBreakMode="TailTruncation"
+           HorizontalOptions="CenterAndExpand"
+           VerticalTextAlignment="Start"
+           Margin="2,10,2,0" />
+    <StackLayout Grid.Row="2"
+                 Grid.RowSpan="1"
+                 VerticalOptions="FillAndExpand">
+        <Label Text="{Binding Description}"
+               FontSize="16"
+               TextColor="Gray"
+               LineBreakMode="TailTruncation"
+               MaxLines="3"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center" />
+    </StackLayout>
+</Grid>

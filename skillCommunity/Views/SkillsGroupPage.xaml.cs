@@ -13,39 +13,41 @@ using skillCommunity.ViewModels;
 
 namespace skillCommunity.Views
 {
-    public partial class ItemsPage : ContentPage
+    public partial class SkillsGroupPage : ContentPage
     {
-        ItemsViewModel viewModel;
+        SkillsGroupViewModel viewModel;
 
-        public ItemsPage()
+
+        public SkillsGroupPage()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = viewModel = new SkillsGroupViewModel();
         }
 
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        void AddItem_Clicked(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Item;
+            Console.WriteLine("ok");
+        }
+
+        async void OnItemSelected(object sender, SelectionChangedEventArgs args)
+        {
+            var item = args.CurrentSelection;
+
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            await Navigation.PushAsync(new SkillsPage());//new ItemDetailViewModel(item)));
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;
-        }
-
-        async void AddItem_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
+            if (viewModel.SkillsGrp.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
     }

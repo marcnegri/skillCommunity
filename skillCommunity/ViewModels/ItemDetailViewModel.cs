@@ -6,10 +6,10 @@ namespace skillCommunity.ViewModels
 {
     public class ItemDetailViewModel : BaseViewModel
     {
-        public Item Item { get; set; }
-        public ItemDetailViewModel(Item item = null)
+        public SkillsGroup Item { get; set; }
+        public ItemDetailViewModel(SkillsGroup item = null)
         {
-            Title = item?.Text;
+            Title = item?.Label;
             Item = item;
         }
     }

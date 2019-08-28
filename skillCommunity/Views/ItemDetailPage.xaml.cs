@@ -23,9 +23,9 @@ namespace skillCommunity.Views
         {
             InitializeComponent();
 
-            var item = new Item
+            var item = new SkillsGroup
             {
-                Text = "Item 1",
+                Label = "Item 1",
                 Description = "This is an item description."
             };
 

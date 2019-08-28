@@ -7,25 +7,27 @@ using Xamarin.Forms;
 
 using skillCommunity.Models;
 using skillCommunity.Views;
+using skillCommunity.Services;
 
 namespace skillCommunity.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class SkillsGroupViewModel : BaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public IDataStore<SkillsGroup> DataStore => DependencyService.Get<IDataStore<SkillsGroup>>() ?? new SkillsGroupDataStore();
+        public ObservableCollection<SkillsGroup> SkillsGrp { get; set; }
         public Command LoadItemsCommand { get; set; }
 
-        public ItemsViewModel()
+        public SkillsGroupViewModel()
         {
             Title = "Browse";
-            Items = new ObservableCollection<Item>();
+            SkillsGrp = new ObservableCollection<SkillsGroup>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
+            MessagingCenter.Subscribe<NewItemPage, SkillsGroup>(this, "AddItem", async (obj, item) =>
             {
-                var newItem = item as Item;
-                Items.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
+                var newItem = item as SkillsGroup;
+                SkillsGrp.Add(newItem);
+                bool test = await DataStore.AddItemAsync(newItem);
             });
         }
 
@@ -38,11 +40,11 @@ namespace skillCommunity.ViewModels
 
             try
             {
-                Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
+                SkillsGrp.Clear();
+                var items = await DataStore.GetItemsAsync();
                 foreach (var item in items)
                 {
-                    Items.Add(item);
+                    SkillsGrp.Add(item);
                 }
             }
             catch (Exception ex)

@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace skillCommunity.CustomItems
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CoursesViewCell : ViewCell
+    public partial class SkillViewCell : ViewCell
     {
-        public CoursesViewCell()
+        public SkillViewCell()
         {
             InitializeComponent();
         }
